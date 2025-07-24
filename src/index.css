@@ -1,0 +1,28 @@
+@import "tailwindcss";
+.heading {
+}
+
+.main-layout {
+  display: flex;
+  height: 100vh; /* Full height of the screen */
+}
+
+.main-layout > * {
+  height: 100%;
+}
+
+.main-content {
+  background-color: #18273d;
+  /* padding-top: 50px; */
+  flex: 1; /* Take up the remaining horizontal space */
+}
+
+
+
+.terms-bg{
+  background-image: url(../src/assets//whitebg.jpg);
+  background-position:center;
+  background-size: cover;
+  background-position: fixed;
+  opacity: 0.8;
+}
