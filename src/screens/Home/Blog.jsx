@@ -152,13 +152,13 @@ const BlogForm = ({ onSubmit, onCancel, initialData = null }) => {
       <form onSubmit={handleSubmit}>
         <div className="mb-4">
           <label htmlFor="blogImage" className="block text-white text-sm font-bold mb-2">
-            Upload Image:
+            Upload Image
           </label>
           <input
             type="file"
             id="blogImage"
             accept="image/*"
-            className="text-white"
+            className="bg-white text-blue-800  py-3 text-center font-semibold cursor-pointer text-sm px-4 rounded-md    "
             onChange={(e) => setImageFile(e.target.files[0])}
           />
           {uploading && <p className="text-sm text-yellow-400 mt-1">Uploading...</p>}

@@ -70,7 +70,7 @@ const UsersTable = () => {
             <div className="container mx-auto">
                 <div className="flex items-center gap-x-3 mb-8">
                     <h2 className="text-3xl font-medium text-white">Users</h2>
-                    <span className="px-3 py-1 text-xs text-blue-600 bg-blue-100 rounded-full dark:bg-gray-600 dark:text-blue-400">
+                    <span className="px-3 py-1 text-xs text-white bg-blue-100 rounded-full dark:bg-gray-600     ">
                         {filteredUsers.length} users
                     </span>
                 </div>
@@ -79,7 +79,7 @@ const UsersTable = () => {
                     <input
                         type="text"
                         placeholder="Search by name or email..."
-                        className="w-full p-3 border bg-gray-400 border-gray-300 rounded-lg shadow-sm focus:ring-pink-500 focus:border-pink-500 text-gray-900"
+                        className="w-2/6 p-3 border bg-gray-200 border-gray-300 rounded-lg shadow-sm focus:ring-pink-500 focus:border-pink-500 text-gray-900"
                         value={searchTerm}
                         onChange={(e) => setSearchTerm(e.target.value)}
                     />
@@ -90,7 +90,7 @@ const UsersTable = () => {
                         <div className="inline-block min-w-full py-2 align-middle md:px-6 lg:px-8">
                             <div className="overflow-hidden border border-gray-200 rounded-lg shadow-md">
                                 <table className="min-w-full divide-y divide-gray-200">
-                                    <thead className="bg-gray-50">
+                                    <thead className="bg-blue-50">
                                         <tr>
                                             <th className="py-3.5 px-4 text-sm font-normal text-left text-gray-600">
                                                 <div className="flex items-center gap-x-3">
@@ -106,7 +106,7 @@ const UsersTable = () => {
                                             <th className="px-4 py-3.5 text-sm font-normal text-left text-gray-600">Actions</th>
                                         </tr>
                                     </thead>
-                                    <tbody className="bg-white divide-y divide-gray-200">
+                                    <tbody className="bg-blue-100 divide-y divide-gray-200">
                                         {filteredUsers.length > 0 ? (
                                             filteredUsers.map((user) => (
                                                 <tr key={user._id}>

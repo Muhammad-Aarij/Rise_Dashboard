@@ -1,4 +1,5 @@
 import React from "react";
+import { useAuth } from '../contexts/AuthContext';
 import profile from '../assets/profile.png'
 import alert from '../assets/alert.png'
 import audio from '../assets/auto.png'
@@ -9,12 +10,31 @@ import chat from '../assets/chat.png'
 
 
 const Sidebar = () => {
+  const { logout, user } = useAuth();
+
   return (
     <aside className="flex flex-col w-64 h-screen px-5 py-8 overflow-y-auto bg-white border-r dark:bg-gray-900 dark:border-gray-700">
       {/* Logo */}
       <a href="/" aria-label="Home">
         <h1 className="text-white font-bold text-xl">Rise Dashboard </h1>
       </a>
+
+      {/* User Info */}
+      {user && (
+        <div className="mt-4 p-3 bg-gray-100 rounded-lg">
+          <div className="flex items-center space-x-3">
+            <img 
+              src={user.avatar || profile} 
+              alt="Profile" 
+              className="w-10 h-10 rounded-full"
+            />
+            <div>
+              <p className="text-sm font-medium text-gray-900">{user.name}</p>
+              <p className="text-xs text-gray-500">{user.email}</p>
+            </div>
+          </div>
+        </div>
+      )}
 
       <div className="flex flex-col justify-between flex-1 mt-6">
         <nav className="-mx-3 space-y-6">
@@ -45,6 +65,19 @@ const Sidebar = () => {
             <NavItem href="/pdfView" icon={book} text="Upload Book" />
           </div>
         </nav>
+
+        {/* Logout Button */}
+        <div className="mt-6">
+          <button
+            onClick={logout}
+            className="w-full flex items-center px-3 py-2 text-red-600 transition-colors duration-300 transform rounded-lg hover:bg-red-100 hover:text-red-700"
+          >
+            <svg className="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1" />
+            </svg>
+            Logout
+          </button>
+        </div>
       </div>
     </aside>
   );

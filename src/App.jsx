@@ -1,6 +1,8 @@
 import React from "react";
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, Navigate } from "react-router-dom";
+import { BrowserRouter } from "react-router-dom";
 import MainLayout from "./components/MainLayout";
+import ProtectedRoute from "./components/ProtectedRoute";
 import Home from "./screens/Home/home";
 import UsersTable from "./screens/Home/UsersTable";
 import ChatScreen from "./screens/Home/Chat";
@@ -11,31 +13,43 @@ import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import BlogPage from "./screens/Home/Blog";
 import AudioManager from "./screens/Home/AudioManager";
 import AppointmentRequests from "./screens/Home/AppointmentReq";
-
+import { LoginPage } from "./screens/Home/Login";
+import { AuthProvider } from "./contexts/AuthContext";
 
 function App() {
   const queryClient = new QueryClient();
+  
   return (
-    <>
-      {/* <h1 className="text-4xl text-red-500">Aarij</h1> */}
+    <BrowserRouter>
       <QueryClientProvider client={queryClient}>
-        <Routes>
-          <Route path="/" element={<MainLayout />}>
-            {/* <Route index element={<Home />} /> */}
-            <Route index element={<UsersTable />} /> {/* Changed from index to path */}
-            <Route path="users" element={<UsersTable />} /> {/* Changed from index to path */}
-            <Route path="blogs" element={<BlogPage />} /> {/* Changed from index to path */}
-            <Route path="chat" element={<ChatScreen />} /> {/* Changed from index to path */}
-            <Route path="alert" element={<NotificationAlert />} /> {/* Changed from index to path */}
-            <Route path="newsletter" element={<NewsletterSender />} /> {/* Changed from index to path */}
-            <Route path="pdfView" element={<PdfLibraryManager />} /> {/* Changed from index to path */}
-            <Route path="audios" element={<AudioManager />} /> {/* Changed from index to path */}
-            <Route path="appointment" element={<AppointmentRequests />} /> {/* Changed from index to path */}
-            {/* Add more routes here */}
-          </Route>
-        </Routes>
+        <AuthProvider>
+          <Routes>
+            {/* Public route - Login */}
+            <Route path="/login" element={<LoginPage />} />
+            
+            {/* Protected routes - Main Layout */}
+            <Route path="/" element={
+              <ProtectedRoute>
+                <MainLayout />
+              </ProtectedRoute>
+            }>
+              <Route index element={<Navigate to="/users" replace />} />
+              <Route path="users" element={<UsersTable />} />
+              <Route path="blogs" element={<BlogPage />} />
+              <Route path="chat" element={<ChatScreen />} />
+              <Route path="alert" element={<NotificationAlert />} />
+              <Route path="newsletter" element={<NewsletterSender />} />
+              <Route path="pdfView" element={<PdfLibraryManager />} />
+              <Route path="audios" element={<AudioManager />} />
+              <Route path="appointment" element={<AppointmentRequests />} />
+            </Route>
+
+            {/* Catch all - redirect to login */}
+            <Route path="*" element={<Navigate to="/login" replace />} />
+          </Routes>
+        </AuthProvider>
       </QueryClientProvider>
-    </>
+    </BrowserRouter>
   );
 }
 
