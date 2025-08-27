@@ -224,33 +224,40 @@ const BlogForm = ({ onSubmit, onCancel, initialData = null }) => {
 // --- BlogItem Component ---
 const BlogItem = ({ blog, onEdit, onDelete, onView }) => {
     return (
-        <div className="bg-[#f7f7f7ee] rounded-lg shadow-md flex flex-col md:flex-col items-center md:items-start space-y-4 md:space-y-0 md:space-x-6 mb-6">
+        <div className="bg-[#f7f7f7ee] rounded-lg shadow-md flex flex-col items-center md:items-start mb-6 overflow-hidden">
             <img
-                src={blog.imageUrl} // Use imageUrl from blog object
+                src={blog.imageUrl}
                 alt={blog.title}
-                className="w-full  h-32 md:h-48 object-cover rounded-t-lg shadow-sm flex-shrink-0"
-                onError={(e) => { e.target.src = 'https://placehold.co/400x225/E0E0E0/333333?text=Image+Error'; }} // Fallback
+                className="w-full h-32 md:h-48 object-cover rounded-t-lg shadow-sm flex-shrink-0"
+                onError={(e) => { 
+                    e.target.src = 'https://placehold.co/400x225/E0E0E0/333333?text=Image+Error'; 
+                }}
             />
-            <div className="flex-1 p-3">
+            <div className="p-3 w-full">
                 <h3 className="text-xl font-bold text-gray-800 mb-2">{blog.title}</h3>
-                {/* Display full content or truncated content */}
-                <p className="flex-1 text-gray-600 text-sm mb-3 line-clamp-3">{blog.content}</p>
+                
+                {/* Content */}
+                <p className="text-gray-600 text-sm mb-3 line-clamp-3 break-words">
+                    {blog.content}
+                </p>
+
+                {/* Buttons */}
                 <div className="flex space-x-3">
                     <button
                         onClick={() => onView(blog)}
-                        className="border-2 w-full border-blue-500 hover:bg-blue-200 text-blue-500 font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline transition duration-200"
+                        className="border-2 flex-1 border-blue-500 hover:bg-blue-200 text-blue-500 font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline transition duration-200"
                     >
                         View
                     </button>
                     <button
                         onClick={() => onEdit(blog)}
-                        className="border-blue-500 border-2 hover:bg-blue-200 text-blue-500 font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline transition duration-200"
+                        className="border-blue-500 flex-1 border-2 hover:bg-blue-200 text-blue-500 font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline transition duration-200"
                     >
                         Edit
                     </button>
                     <button
                         onClick={() => onDelete(blog.id)}
-                        className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline transition duration-200"
+                        className="bg-red-500 flex-1 hover:bg-red-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline transition duration-200"
                     >
                         Delete
                     </button>
@@ -259,6 +266,7 @@ const BlogItem = ({ blog, onEdit, onDelete, onView }) => {
         </div>
     );
 };
+
 
 // --- BlogDetailPage Component ---
 const BlogDetailPage = ({ blog, onBack }) => {

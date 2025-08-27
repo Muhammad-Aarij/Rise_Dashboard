@@ -7,9 +7,13 @@ export default function MainLayout() {
   const { isAuth } = useAuth();
 
   return (
-    <div className="main-layout">
-      {isAuth && <AppSidebar />}
-      <div className={`main-content ${isAuth ? 'with-sidebar' : 'no-sidebar'}`}>
+    <div className="main-layout flex h-screen w-full overflow-hidden">
+      {isAuth && (
+        <div className="sidebar flex-shrink-0 h-full">
+          <AppSidebar />
+        </div>
+      )}
+      <div className="main-content flex-1 overflow-y-auto">
         <Outlet />
       </div>
     </div>
