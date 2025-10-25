@@ -5,7 +5,7 @@ const UsersTable = () => {
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
     const [searchTerm, setSearchTerm] = useState("");
-    const BASE_URL = 'https://rise-backend-xwmx.onrender.com';
+    const BASE_URL = 'https://api.riseselfesteem.com';
 
     useEffect(() => {
         const fetchUsers = async () => {

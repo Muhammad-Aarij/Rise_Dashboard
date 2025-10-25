@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
 import { Bell, Trash2, Send } from "lucide-react";
 
-const BASE_URL = "https://rise-backend-xwmx.onrender.com";
+const BASE_URL = "https://api.riseselfesteem.com";
 
 export default function NotificationsManager() {
   const [title, setTitle] = useState("");

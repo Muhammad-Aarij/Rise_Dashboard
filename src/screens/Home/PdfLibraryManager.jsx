@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 
 
-const BASE_URL = 'https://rise-backend-xwmx.onrender.com';
+const BASE_URL = 'https://api.riseselfesteem.com';
 const CLOUDINARY_CLOUD_NAME = 'dqzkekpjn'; // As provided in your example
 const CLOUDINARY_UPLOAD_PRESET = 'Rise_assets'; // As provided in your example
 

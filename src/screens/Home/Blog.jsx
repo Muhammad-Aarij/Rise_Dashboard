@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 
-const BASE_URL = 'https://rise-backend-xwmx.onrender.com';
+const BASE_URL = 'https://api.riseselfesteem.com';
 
 const createBlog = async (blogData, userId) => {
     try {

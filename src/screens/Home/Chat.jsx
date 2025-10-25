@@ -5,7 +5,7 @@ import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
 import axios from 'axios';
 
 // Base URL for API calls
-const BASE_URL = 'https://rise-backend-xwmx.onrender.com';
+const BASE_URL = 'https://api.riseselfesteem.com';
 
 // Simulate the current logged-in user ID. Replace with actual user ID from authentication if available.
 const CURRENT_USER_ID = "6854f3663e37aad6eff91113"; // Example: 'test1' user ID

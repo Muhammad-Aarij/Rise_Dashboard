@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 
 // BASE_URL and Cloudinary constants are kept as they were
-const BASE_URL = 'https://rise-backend-xwmx.onrender.com';
+const BASE_URL = 'https://api.riseselfesteem.com';
 const CLOUDINARY_CLOUD_NAME = 'dfvkeqfbf';
 const CLOUDINARY_UPLOAD_PRESET = 'Rise_App';
 

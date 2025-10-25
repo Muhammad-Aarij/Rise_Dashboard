@@ -3,7 +3,7 @@ import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
 import axios from 'axios'; // Import axios
 
 // Base URL for the API
-const BASE_URL = 'https://rise-backend-xwmx.onrender.com';
+const BASE_URL = 'https://api.riseselfesteem.com';
 
 /**
  * AppointmentRequests Component

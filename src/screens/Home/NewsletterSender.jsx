@@ -20,7 +20,7 @@ const NewsletterSender = () => {
   const [logoUrl, setLogoUrl] = useState(null); // Default logo is now null
   const [previewUrl, setPreviewUrl] = useState(null); // State for the image preview
   const queryClient = useQueryClient();
-  const BASE_URL = 'https://rise-backend-xwmx.onrender.com';
+  const BASE_URL = 'https://api.riseselfesteem.com';
 
   // Clean up the temporary object URL when the component unmounts
   useEffect(() => {

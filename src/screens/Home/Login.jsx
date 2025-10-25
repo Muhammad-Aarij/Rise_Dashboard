@@ -3,7 +3,7 @@ import { useNavigate, useLocation } from 'react-router-dom';
 import { useAuth } from '../../contexts/AuthContext';
 import axios from 'axios';
 
-const API_BASE_URL = 'https://rise-backend-xwmx.onrender.com';
+const API_BASE_URL = 'https://api.riseselfesteem.com';
 
 export const LoginPage = () => {
   const navigate = useNavigate();
