@@ -15,6 +15,7 @@ import AudioManager from "./screens/Home/AudioManager";
 import AppointmentRequests from "./screens/Home/AppointmentReq";
 import { LoginPage } from "./screens/Home/Login";
 import { AuthProvider } from "./contexts/AuthContext";
+import SupportRequests from "./screens/Home/SupportRequests";
 
 function App() {
   const queryClient = new QueryClient();
@@ -42,6 +43,7 @@ function App() {
               <Route path="pdfView" element={<PdfLibraryManager />} />
               <Route path="audios" element={<AudioManager />} />
               <Route path="appointment" element={<AppointmentRequests />} />
+              <Route path="support" element={<SupportRequests />} />
             </Route>
 
             {/* Catch all - redirect to login */}
