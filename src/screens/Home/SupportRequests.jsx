@@ -2,7 +2,7 @@ import React, { useState, useMemo, useEffect } from 'react';
 import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
 import axios from 'axios';
 
-const BASE_URL = 'https://rise-backend-nine.vercel.app';
+const BASE_URL = 'https://api.riseselfesteem.com';
 const STATUS_OPTIONS = ['Unread', 'In-Progress', 'Resolved', 'Cancelled'];
 
 function pickDate(obj) {

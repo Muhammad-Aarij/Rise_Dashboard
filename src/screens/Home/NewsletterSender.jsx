@@ -2,13 +2,12 @@ import React, { useEffect, useMemo, useState } from 'react';
 import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
 import { Mail, Trash2, Image as ImageIcon, Loader2, AlertCircle, CheckCircle2, Search } from 'lucide-react';
 
-// ===== Helpers =====
+
 const clsx = (...xs) => xs.filter(Boolean).join(' ');
 const SUBJECT_MAX = 120;
 const BODY_MAX = 5000;
 const PAGE_SIZE = 10;
 
-// ===== Confirm Modal =====
 function Confirm({ open, title, message, busy, onCancel, onConfirm }) {
   if (!open) return null;
   return (
@@ -34,18 +33,15 @@ function Confirm({ open, title, message, busy, onCancel, onConfirm }) {
     </div>
   );
 }
-
-// ===== Main App =====
 export default function App() {
   return <NewsletterSender />;
 }
 
-// ===== Newsletter Sender =====
 const NewsletterSender = () => {
   const [subject, setSubject] = useState('');
   const [recipientName, setRecipientName] = useState('User');
   const [emailBodyText, setEmailBodyText] = useState('');
-  const [receiver, setReceiver] = useState('subscriber'); // 'subscriber' | 'user'
+  const [receiver, setReceiver] = useState('subscriber'); 
 
   const [status, setStatus] = useState('');
   const [isSending, setIsSending] = useState(false);
@@ -64,18 +60,16 @@ const NewsletterSender = () => {
   const queryClient = useQueryClient();
   const BASE_URL = 'https://api.riseselfesteem.com';
 
-  // Cleanup object URL
   useEffect(() => {
     return () => {
       if (previewUrl) URL.revokeObjectURL(previewUrl);
     };
   }, [previewUrl]);
 
-  // ===== Upload to Cloudinary (image) =====
   const uploadImage = async () => {
     if (!imageFile) return null;
 
-    // Validate image
+
     const allowed = ['image/png', 'image/jpeg', 'image/webp', 'image/gif', 'image/svg+xml'];
     if (!allowed.includes(imageFile.type)) {
       setStatus('❌ Invalid logo type. Use PNG/JPG/WEBP/SVG/GIF.');
@@ -149,7 +143,7 @@ const NewsletterSender = () => {
     `;
   };
 
-  // ===== Send Newsletter =====
+  
   const sendNewsletter = async () => {
     if (!subject.trim() || !emailBodyText.trim()) {
       setStatus('❌ Please fill in the subject and email body.');
@@ -192,7 +186,7 @@ const NewsletterSender = () => {
         throw new Error(errorData.message || 'Failed to send newsletter.');
       }
 
-      await response.json().catch(() => ({})); // we don’t need payload here
+      await response.json().catch(() => ({})); 
       setStatus('✅ Newsletter sent successfully!');
 
       setSubject('');
