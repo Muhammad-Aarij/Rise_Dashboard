@@ -3,7 +3,7 @@ import { Routes, Route, Navigate } from "react-router-dom";
 import { BrowserRouter } from "react-router-dom";
 import MainLayout from "./components/MainLayout";
 import ProtectedRoute from "./components/ProtectedRoute";
-import Home from "./screens/Home/home";
+import Home from "./screens/Home/Home";
 import UsersTable from "./screens/Home/UsersTable";
 import ChatScreen from "./screens/Home/Chat";
 import NotificationAlert from "./screens/Home/NotificationAlert";
